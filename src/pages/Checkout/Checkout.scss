@@ -1,0 +1,115 @@
+@import url("https://sb-pgjs.paygreen.fr/latest/paygreen.min.css");
+
+
+
+.button {
+  cursor: pointer;
+  outline: 0;
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  background-color: transparent;
+  background-image: linear-gradient(135deg, #e2fc26, #f2e526);
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #000;
+  border-color: linear-gradient(135deg, #e2fc26, #f2e526);
+  width: 100%;
+  &:hover {
+    color: #000;
+    background-image: linear-gradient(255deg, #e2fc26, #f2e526);
+    border-color: linear-gradient(255deg, #e2fc26, #f2e526);
+  }
+}
+
+.pay-form {
+  width: 95%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pay-form > div {
+  margin-top: 2rem;
+}
+
+.pay-form > label {
+  color: grey;
+  font-weight: 600;
+}
+
+.pay-form > .button {
+  align-self: center;
+  margin-top: 1rem;
+}
+
+.paygreen-pan-frame,
+.paygreen-cvv-frame,
+.paygreen-exp-frame {
+  background-color: rgb(243, 243, 243);
+  padding: 0 0.5rem;
+  border: none !important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.paygreen-pan-frame,
+.paygreen-cvv-frame,
+.paygreen-exp-frame {
+  border-bottom: rgb(93, 93, 93) solid 2px !important;
+}
+.paygreen-pan-frame:hover,
+.paygreen-cvv-frame:hover,
+.paygreen-exp-frame:hover {
+  border-bottom: rgb(126, 126, 126) solid 2px !important;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line > div {
+  max-width: 48%;
+}
+
+#paygreen-reuse-checkbox-container {
+  margin-top: 1rem;
+  height: 60px;
+}
+
+.label--info {
+  font-size: 12px;
+  margin-top: 6px;
+  margin-left: 12px;
+  color: rgb(93, 93, 93);
+}
+
+.frame--activated {
+  box-shadow: none;
+}
+
+.div-info > span > p {
+  color: grey !important;
+  font-size: 12px !important;
+}
+
+
+@media (min-width: 768px) {
+  .pay-form {
+    width: 60%;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 8px;
+  }
+}
+

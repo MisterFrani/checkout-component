@@ -6,20 +6,20 @@ const customStyle = {
   input: {
     base: {
       color: "black",
-      fontSize: "12px",
+      fontSize: "18px",
     },
     hover: {
-      color: "rgb(93, 93, 93)",
+      color: "grey",
     },
     focus: {
-      color: "rgb(52, 52, 52)",
+      color: "grey",
     },
     invalid: {
       color: "red",
     },
     placeholder: {
       base: {
-        color: "rgb(93, 93, 93)",
+        color: "grey",
       },
     },
   },
@@ -34,13 +34,13 @@ const customStyle = {
     },
     box: {
       base: {
-        color: "#424242",
+        color: "#0d6efd",
         hover: {
           color: "#424242",
         },
       },
       unchecked: {
-        color: "#f2e526",
+        color: "#0d6efd",
       },
     },
   },
@@ -114,49 +114,32 @@ function CheckoutPage() {
 
   const PaygreenForm = () => {
     return (
-      <div>
+      <>
         <div id="paygreen-container"></div>
         <div id="paygreen-methods-container"></div>
-        <div className="flex justify-center mt-20">
-          <h1>Entrer les informations de la carte</h1>
-        </div>
-        <div className="flex justify-center mt-20">
-          <div className="pay-form">
-            <div>
-              {/* <label>Card number</label> */}
-              <div id="paygreen-pan-frame"></div>
-              <div className="label--info">
-                <p>La carte doit être à votre nom *</p>
-              </div>
-            </div>
-
-            <div className="line">
-              <div>
-                {/* <label>Expiration</label> */}
-                <div id="paygreen-exp-frame"></div>
-                <div className="label--info">
-                  <p>Date d'expiration *</p>
-                </div>
-              </div>
-              <div>
-                {/* <label>CVV </label> */}
-                <div id="paygreen-cvv-frame"></div>
-                <div className="label--info">
-                  <p>Code CVV *</p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="paygreen-reuse-checkbox-container"
-              className="div-info"
-            ></div>
-            <button id="payButton" className="button" onClick={handlePay}>
-              Payer 12,99 €
-            </button>
+        <div className="pay-form">
+          <div>
+            <label>Card number</label>
+            <div id="paygreen-pan-frame"></div>
           </div>
+
+          <div className="line">
+            <div>
+              <label>CVV </label>
+              <div id="paygreen-cvv-frame"></div>
+            </div>
+            <div>
+              <label>Expiration</label>
+              <div id="paygreen-exp-frame"></div>
+            </div>
+          </div>
+
+          <div id="paygreen-reuse-checkbox-container"></div>
+          <button id="payButton" className="button" onClick={handlePay}>
+            Pay
+          </button>
         </div>
-      </div>
+      </>
     );
   };
 
