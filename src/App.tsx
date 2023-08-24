@@ -1,11 +1,14 @@
-import AppLayout from "./layout/AppLayout";
-import { BrowserRouter} from "react-router-dom";
+import AppLayout from "./layouts/AppLayout";
+import { BrowserRouter } from "react-router-dom";
+import { StateProvider } from "./contexts/StateContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppLayout />
-    </BrowserRouter>
+    <StateProvider>
+      <BrowserRouter>
+        <AppLayout />
+      </BrowserRouter>
+    </StateProvider>
   );
 }
 
