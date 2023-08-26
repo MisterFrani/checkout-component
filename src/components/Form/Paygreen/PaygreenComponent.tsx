@@ -107,7 +107,6 @@ const PaygreenComponent = (props: Props) => {
     }
 
     if (ready !== 3) {
-      displayMessage("Please fill in all fields.");
       console.log(" fill field ");
       return;
     }
