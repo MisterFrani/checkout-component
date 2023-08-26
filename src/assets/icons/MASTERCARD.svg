@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="31px" viewBox="0 0 48 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>mastercard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Deposit-Desktop-2-VERSION" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Depsoit-Desktop-Step-1:-Cards" transform="translate(-365.000000, -165.000000)" fill-rule="nonzero">
+            <g id="mastercard" transform="translate(365.000000, 165.000000)">
+                <rect id="Rectangle-path" fill="#FF5F00" x="17.0322581" y="3.09677419" width="14.7096774" height="24"></rect>
+                <path d="M18.9475801,15.0967742 C18.9488658,10.4709341 21.0950865,6.09954483 24.7741935,3.2292175 C18.4970885,-1.63712923 9.48101151,-0.92982241 4.06329065,4.85397767 C-1.35443022,10.6377778 -1.35443022,19.5557706 4.06329065,25.3395707 C9.48101151,31.1233708 18.4970885,31.8306776 24.7741935,26.9643309 C21.0950865,24.0940036 18.9488658,19.7226143 18.9475801,15.0967742 Z" id="Shape" fill="#EB001B"></path>
+                <path d="M48,15.0967742 C47.9936836,20.8755085 44.7512047,26.1447355 39.646478,28.6717594 C34.5417514,31.1987834 28.4684598,30.541199 24,26.9776404 C27.568197,24.1048689 29.649374,19.728068 29.649374,15.0967742 C29.649374,10.4654804 27.568197,6.08867952 24,3.21590798 C28.4684598,-0.347650635 34.5417514,-1.00523497 39.646478,1.52178897 C44.7512047,4.0488129 47.9936836,9.31803988 48,15.0967742 L48,15.0967742 Z" id="Shape" fill="#F79E1B"></path>
+            </g>
+        </g>
+    </g>
+</svg>

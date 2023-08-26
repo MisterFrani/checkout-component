@@ -27,12 +27,9 @@ export const StateProvider = (props: StateProviderType): JSX.Element => {
   const [message, setMessage] = useState<Message | undefined>();
 
   const startLoading = (): void => {
-    console.log("Im starting");
-
     setLoading(true);
   };
   const stopLoading = (): void => {
-    console.log("Stop here");
     setLoading(false);
   };
 

@@ -1,4 +1,4 @@
-import { Route } from "../shared/types";
+import { Route } from "../types/types";
 
 export const routes: Route = {
   CHECKOUT: {

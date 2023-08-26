@@ -4,13 +4,7 @@ import { structureRoutes } from "../../routes";
 const AppLayout = () => {
   const dynamicRoutes = useRoutes([...structureRoutes.routes]);
 
-  return (
-    <div>
-      <header> </header>
-      <main> {dynamicRoutes} </main>
-      <footer> </footer>
-    </div>
-  );
+  return <div>{dynamicRoutes}</div>;
 };
 
 export default AppLayout;

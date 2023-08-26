@@ -1,4 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 interface Props {
   variant: "success" | "danger" | "warning";
@@ -12,27 +15,31 @@ const AlertComponent = (props: Props) => {
     warning: "yellow",
   };
 
-  useEffect(()=>{
-    console.log(
-      `border border-t-0 border-${color[props.variant]}-400 rounded-b bg-${
-        color[props.variant]
-      }-100 px-4 py-3 text-${color[props.variant]}-700`
-    );
-    
-  },[])
-
+  useEffect(() => {
+    toast(`${props.message}`, {
+      style: {
+        backgroundColor: color[props.variant],
+        color: "white",
+        fontWeight: "bold",
+        fontSize: "1.2rem",
+      },
+    });
+  }, []);
 
   return (
-    <div role="alert" className="mt-20 ">
-      <div
-        className={`border border-t-0 border-${
-          color[props.variant]
-        }-400 rounded-b bg-${color[props.variant]}-100 px-4 py-3 text-${
-          color[props.variant]
-        }-700`}
-      >
-        <p>{props.message}</p>
-      </div>
+    <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AlertComponent from "../../widgets/AlertComponent";
 
+import visaIcon from "../../../assets/icons/VISA.svg";
+import mastercardIcon from "../../../assets/icons/MASTERCARD.svg";
+import { FaCreditCard, FaQuestionCircle } from "react-icons/fa";
+
+import Modal from "./Modal";
 interface Props {
   title: string;
   style?: any;
@@ -16,6 +21,16 @@ const PaygreenComponent = (props: Props) => {
   const [paygreen] = usePayment();
   const { stopLoading, setMessage, startLoading, message } = useStateProvider();
   const [ready, setReady] = useState<number>(0);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCvvHelpClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const navigate = useNavigate();
 
@@ -60,7 +75,7 @@ const PaygreenComponent = (props: Props) => {
     paygreen.attachEventListener(paygreen.Events.TOKEN_FAIL, (event) => {
       console.error("Fail to tokenize card: ", event);
       setMessage({
-        detail: " Fail to tokenize card",
+        detail: " Les informations de votre carte sont incorrectes ",
         status: "danger",
       });
       stopLoading();
@@ -69,7 +84,7 @@ const PaygreenComponent = (props: Props) => {
     paygreen.attachEventListener(paygreen.Events.ERROR, (event) => {
       console.error("Your custom error handling", event);
       setMessage({
-        detail: "Your custom error handling",
+        detail: " Il y a eu une erreur lors du paiement, veuillez réessayer ",
         status: "danger",
       });
       stopLoading();
@@ -92,6 +107,7 @@ const PaygreenComponent = (props: Props) => {
     }
 
     if (ready !== 3) {
+      displayMessage("Please fill in all fields.");
       console.log(" fill field ");
       return;
     }
@@ -100,52 +116,97 @@ const PaygreenComponent = (props: Props) => {
     paygreen.submitPayment();
   };
 
+  const price = 12.99;
+  const cvvHelp = "Comment trouver le code CVV ?";
+  const cvvHelpText = `Le code CVV est un code de sécurité à 3 chiffres qui se trouve au dos de votre carte bancaire. Il est situé à droite de la zone de signature. Il s'agit des 3 derniers chiffres du numéro inscrit au dos de votre carte bancaire.`;
+
   return (
-    <div>
+    <div className="w-full ">
       <div id="paygreen-container"></div>
       <div id="paygreen-methods-container"></div>
-      <div className="flex justify-center mt-20">
-        <h1>{props.title}</h1>
+      <div className="flex justify-center mt-5 md:mt-16 px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl text-center">{props.title}</h1>
       </div>
 
       {message && (
         <AlertComponent variant={message.status} message={message.detail} />
       )}
 
-      <div className="flex justify-center mt-20">
+      <div className="flex justify-center mt-5 sm:mt-4 ">
         <div className="pay-form">
           <div>
-            {/* <label>Card number</label> */}
-            <div id="paygreen-pan-frame"></div>
+            <div id="paygreen-pan-frame">
+              <FaCreditCard className="input-icon" />
+            </div>
             <div className="label--info">
-              <p>La carte doit être à votre nom *</p>
+              <p>Numéro de carte *</p>
             </div>
           </div>
 
           <div className="line">
             <div>
-              {/* <label>Expiration</label> */}
               <div id="paygreen-exp-frame"></div>
               <div className="label--info">
                 <p>Date d'expiration *</p>
               </div>
             </div>
             <div>
-              {/* <label>CVV </label> */}
-              <div id="paygreen-cvv-frame"></div>
+              <div id="paygreen-cvv-frame">
+                <button
+                  className="cvv-help-button input-icon"
+                  onClick={handleCvvHelpClick}
+                >
+                  <FaQuestionCircle className="cvv-help-icon" />
+                </button>
+              </div>
               <div className="label--info">
                 <p>Code CVV *</p>
               </div>
+
+              <Modal
+                isOpen={showModal}
+                onClose={handleCloseModal}
+                title={cvvHelp}
+              >
+                <p className=" mt-7  ">{cvvHelpText}</p>
+
+                <div className="flex justify-center mt-7">
+                  <button
+                    className="modal-close cursor-pointer z-20 outline-none inline-block font-semibold leading-8 text-center bg-transparent bg-pikko-gradient-1 from-pikkoYellow-2 to-pikkoYellow-1 border border-transparent py-2 px-4 text-base rounded-md transition duration-200 ease-in-out hover:bg-pikko-gradient-2 hover:from-pikkoYellow-2 hover:to-pikkoYellow-1  hover:text-gray-900 w-full"
+                    onClick={handleCloseModal}
+                  >
+                    Compris
+                  </button>
+                </div>
+              </Modal>
             </div>
           </div>
 
-          <div
-            id="paygreen-reuse-checkbox-container"
-            className="div-info"
-          ></div>
-          <button id="payButton" className="button" onClick={handlePay}>
-            Payer 12,99 €
-          </button>
+          <div id="paygreen-reuse-checkbox-container" className=" "></div>
+
+          <div className="text-center">
+            <hr className="my-4 w-60 bg-gray-400 mx-auto" />
+            <p className="my-4 text-pikkoGray-1"> Cartes acceptées </p>
+
+            <div className="flex justify-center items-center">
+              <img src={visaIcon} alt="visa" className="w-10 h-10 mr-2" />
+              <img
+                src={mastercardIcon}
+                alt="mastercard"
+                className="w-10 h-10 mr-2"
+              />
+            </div>
+          </div>
+
+          <div>
+            <button
+              id="payButton"
+              onClick={handlePay}
+              className="cursor-pointer outline-none inline-block font-semibold leading-8 text-center bg-transparent bg-pikko-gradient-1 from-pikkoYellow-2 to-pikkoYellow-1 border border-transparent py-2 px-4 text-base rounded-md transition duration-200 ease-in-out hover:bg-pikko-gradient-2 hover:from-pikkoYellow-2 hover:to-pikkoYellow-1  hover:text-gray-900 w-full"
+            >
+              Payer {price} €
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import "./Checkout.scss";
 import PaygreenComponent from "../../components/Form/Paygreen/PaygreenComponent";
 
 const customStyle = {
@@ -27,6 +25,7 @@ const customStyle = {
     label: {
       base: {
         color: "black",
+        backgroundColor: "red",
       },
       unchecked: {
         color: "black",
@@ -38,6 +37,7 @@ const customStyle = {
         hover: {
           color: "#424242",
         },
+        backgroundColor: "red",
       },
       unchecked: {
         color: "#f2e526",
@@ -48,10 +48,11 @@ const customStyle = {
 
 function CheckoutPage() {
   return (
-    <div className="container">
-      <PaygreenComponent title="Formulaire de paiement" style={customStyle} />
+    <div className="w-full">
+      <PaygreenComponent title="Entrer les informations de la carte" style={customStyle} />
     </div>
   );
 }
 
 export default CheckoutPage;
+
